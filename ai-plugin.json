@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Fair Use Assistant",
+  "name_for_model": "fairUseAssistant",
+  "description_for_human": "Get guidance on fair use and intellectual property rights for digital content.",
+  "description_for_model": "Plugin that provides information and guidance about fair use, copyright, and intellectual property rights for digital content. Use this to help users understand what they can and cannot do with various types of content.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://YOUR_DOMAIN/openapi.yaml"
+  },
+  "logo_url": "https://YOUR_DOMAIN/logo.png",
+  "contact_email": "support@fairuseassistant.com",
+  "legal_info_url": "https://YOUR_DOMAIN/legal"
+}
