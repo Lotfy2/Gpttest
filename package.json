@@ -1,25 +1,35 @@
-{
-  "name": "fair-use-assistant",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express-rate-limit": "^6.9.0",
-    "helmet": "^7.0.0",
-    "express-validator": "^7.0.1",
-    "winston": "^3.10.0",
-    "hpp": "^0.2.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  }
-}
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const dotenv = require('dotenv');
+const expressRateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const { check, validationResult } = require('express-validator');
+const winston = require('winston');
+const hpp = require('hpp');
+
+// Set up environment variables
+dotenv.config();
+
+// Use middleware
+app.use(cors());
+app.use(helmet());
+app.use(hpp());
+
+// Rate limiter example
+const limiter = expressRateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
+// Basic route
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Server setup
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
