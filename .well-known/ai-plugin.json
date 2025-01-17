@@ -9,7 +9,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://YOUR_DOMAIN/openapi.yaml"
+    "url": "https://gpttest-fawn.vercel.app/"
   },
   "logo_url": "https://YOUR_DOMAIN/logo.png",
   "contact_email": "support@fairuseassistant.com",
