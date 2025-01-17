@@ -8,6 +8,18 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "src/server.js"
+    },
+    {
+      "src": "/.well-known/(.*)",
+      "dest": "src/server.js"
+    },
+    {
+      "src": "/openapi.yaml",
+      "dest": "src/server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "src/server.js"
     }
