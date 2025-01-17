@@ -4,7 +4,7 @@ info:
   description: API for getting guidance on fair use and IP rights
   version: 1.0.0
 servers:
-  - url: https://YOUR_DOMAIN
+  - url: https://gpttest-fawn.vercel.app/
 paths:
   /api/fair-use/analyze:
     post:
