@@ -1,0 +1,77 @@
+openapi: 3.0.1
+info:
+  title: Fair Use Assistant API
+  description: API for getting guidance on fair use and IP rights
+  version: 1.0.0
+servers:
+  - url: https://YOUR_DOMAIN
+paths:
+  /api/fair-use/analyze:
+    post:
+      operationId: analyzeFairUse
+      summary: Analyze a specific use case for fair use compliance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - content_type
+                - intended_use
+                - description
+              properties:
+                content_type:
+                  type: string
+                  description: Type of content (e.g., image, text, music, video)
+                intended_use:
+                  type: string
+                  description: How the content will be used
+                description:
+                  type: string
+                  description: Detailed description of the use case
+      responses:
+        '200':
+          description: Fair use analysis results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  is_fair_use:
+                    type: boolean
+                  explanation:
+                    type: string
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+  /api/rights/check:
+    get:
+      operationId: checkRights
+      summary: Check rights for a specific type of content
+      parameters:
+        - name: content_type
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Type of content to check rights for
+      responses:
+        '200':
+          description: Rights information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rights_info:
+                    type: string
+                  common_restrictions:
+                    type: array
+                    items:
+                      type: string
+                  allowed_uses:
+                    type: array
+                    items:
+                      type: string
